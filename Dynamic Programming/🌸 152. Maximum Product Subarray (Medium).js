@@ -18,3 +18,8 @@ var maxProduct = function(nums) {
     }
     return result
 };
+
+/**
+* subarray的最大product是互相有交集的，即我选了前一个的最大product再与我自己相乘，而独立的部分是不选前面的，只从自己开始新的subarray，因此要在两者中选最大的。
+* 这里有一个难点是，当遇到一个负值时，乘数越小product反而越大。因此需要记录前一个状态的最小值及最大值，分别与当前值相乘再取最小值和最大值。
+*/
