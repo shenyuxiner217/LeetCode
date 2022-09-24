@@ -1,8 +1,16 @@
 # Recursion vs Iteration
 
+## Recursion
 1. 先确定递归函数需要传入的参数（一般是根结点和一个用来装遍历结果的数组）和返回值一般都是void（因为返回值放入数组了）
 2. 确定终止条件（一般都是根结点为null）
 3. 确定单层递归的逻辑
+
+
+## Iteration
+1. 先序遍历的Iteration最好写，因为遍历顺序与处理顺序一致，只需要遍历一遍，边遍历边塞进stack边弹出放入答案，最后因为左右弹出和放入的顺序要颠倒，需要先放右再放左。
+2. 中序遍历，遍历顺序是先根再左右，但是处理顺序是先左再根再右，根会被重复遍历两次，第二次遍历弹出时，才会处理它，然后遍历它的右边，把右边再当作根重复上述步骤。
+3. 后序遍历，遍历顺序依然要先根再左右，但是根要最后处理，因此根要被遍历三遍，处理起来更加麻烦。因此可以把先序遍历（根左右）调换顺序（根右左），再reverse整个数组（左右根）。
+
 
 
 ## 先序遍历：
@@ -48,6 +56,7 @@ var preorderTraversal = function(root) {
 };
 ```
 
+
 ## 后序遍历
 
 Recursion：
@@ -67,6 +76,26 @@ var postorderTraversal = function(root) {
     return res
 };
 ```
+
+Iteration:
+
+```javascript
+var postorderTraversal = function(root) {
+    const stack = [root]
+    const result = []
+    
+    while (stack.length) {
+        const temp = stack.pop()
+        if (temp === null) continue
+        result.push(temp.val)
+        stack.push(temp.left)
+        stack.push(temp.right)
+    }
+    
+    return result.reverse()
+};
+```
+
 
 ## 中序遍历
 
