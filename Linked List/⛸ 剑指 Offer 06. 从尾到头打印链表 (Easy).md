@@ -21,6 +21,8 @@ var reversePrint = function(head) {
 ```
 
 ## RECURSION VERSION2:
+如果把result作为recursion函数的一个变量传入方法，则与上述方法相似，因为这里的result也是一个全局变量。
+所以修改后不需要赋值给他上一层的调用，但需要返回result结果。
 
 ```javascript
 var reversePrint = function(head) {
