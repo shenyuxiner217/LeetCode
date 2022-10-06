@@ -38,6 +38,8 @@ var sortArray = function(nums) {
 ```
 
 ## Merge Sort
+归并排序的时间复杂度稳定为nlogn，因为每次都是从中间分。
+与快排的区别是，快排可以看作先序遍历，先操作再往底走，而归并是后续遍历，先走到底再开始操作。
 
 ```javascript
 var sortArray = function(nums) {
